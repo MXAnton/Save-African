@@ -26,9 +26,8 @@ public class WaterdropController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log("Hit");
         if (collision.gameObject.tag == "Bowl")
         {
             gameMaster.AddScore(1);

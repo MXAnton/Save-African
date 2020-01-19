@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class BowlMovement : MonoBehaviour
 {
     public float movementSpeed = 7f;
 
@@ -36,7 +36,6 @@ public class PlayerMovement : MonoBehaviour
             newPosition.y = maxY;
         }
 
-        //transform.position = newPosition;
-        GetComponent<Rigidbody2D>().AddForce(transform.up * 20);
+        transform.position = newPosition;
     }
 }
