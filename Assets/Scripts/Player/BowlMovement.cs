@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BowlMovement : MonoBehaviour
 {
+    public bool useKeys = false;
+
     public float movementSpeed = 7f;
 
     public float minX = -3.6f;
@@ -14,28 +16,54 @@ public class BowlMovement : MonoBehaviour
 
     void Update()
     {
+        if (Input.touchCount > 0)
+        {
+            MoveByTouch();
+        }
+        else if (useKeys == true)
+        {
+            MoveByKeyPresses();
+        }
+    }
+
+    void MoveByTouch()
+    {
+        Touch touch = Input.GetTouch(0);
+        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+        touchPosition.z = 0;
+
+        transform.position = CheckNewWantedPosition(touchPosition);
+    }
+
+    void MoveByKeyPresses()
+    {
         float inputX = Input.GetAxis("Horizontal");
         float inputY = Input.GetAxis("Vertical");
 
         Vector2 newPosition = new Vector2(transform.position.x + movementSpeed * inputX * Time.deltaTime, transform.position.y + movementSpeed * inputY * Time.deltaTime);
 
-        if (newPosition.x < minX)
+        transform.position = CheckNewWantedPosition(newPosition);
+    }
+
+    Vector2 CheckNewWantedPosition(Vector2 position)
+    {
+        if (position.x < minX)
         {
-            newPosition.x = minX;
+            position.x = minX;
         }
-        else if (newPosition.x > maxX)
+        else if (position.x > maxX)
         {
-            newPosition.x = maxX;
+            position.x = maxX;
         }
-        if (newPosition.y < minY)
+        if (position.y < minY)
         {
-            newPosition.y = minY;
+            position.y = minY;
         }
-        else if (newPosition.y > maxY)
+        else if (position.y > maxY)
         {
-            newPosition.y = maxY;
+            position.y = maxY;
         }
 
-        transform.position = newPosition;
+        return position;
     }
 }
