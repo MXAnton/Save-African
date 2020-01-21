@@ -624,8 +624,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 6
-  minX: -3.3
-  maxX: 3.3
+  minX: -2.3
+  maxX: 2.3
   minY: -3.8
   maxY: -2.5
 --- !u!50 &319863628
@@ -1939,7 +1939,7 @@ Transform:
   m_GameObject: {fileID: 1574709684}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 4.2, z: 0}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
+  m_LocalScale: {x: 1, y: 1.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1960,8 +1960,8 @@ MonoBehaviour:
   waterdrop: {fileID: 4074104997341702900, guid: 1a2b6252b35367a4ab9e3229b9b91da2,
     type: 3}
   spawnYPosition: 4.5
-  minX: -3
-  maxX: 3
+  minX: -2.2
+  maxX: 2.2
   startWaterdropMovementSpeed: 0.8
   waterdropMovementSpeed: 0
   startWaterdropSpawnDelay: 5
@@ -2796,7 +2796,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -45}
+  m_AnchoredPosition: {x: 0, y: -10}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &2131195207
