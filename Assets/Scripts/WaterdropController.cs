@@ -18,7 +18,10 @@ public class WaterdropController : MonoBehaviour
 
     void Update()
     {
-        transform.position = new Vector2(transform.position.x, transform.position.y - movementSpeed * Time.deltaTime);
+        if (gameMaster.gamePaused == false)
+        {
+            transform.position = new Vector2(transform.position.x, transform.position.y - movementSpeed * Time.deltaTime);
+        }
 
         if (transform.position.y < -5)
         {
@@ -28,10 +31,13 @@ public class WaterdropController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Bowl")
+        if (gameMaster.gamePaused == false)
         {
-            gameMaster.AddScore(1);
-            Destroy(gameObject);
+            if (collision.gameObject.tag == "Bowl")
+            {
+                gameMaster.AddScore(1);
+                Destroy(gameObject);
+            }
         }
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BowlMovement : MonoBehaviour
 {
+    public GameMaster gameMaster;
+
     public bool useKeys = false;
 
     public float movementSpeed = 7f;
@@ -16,13 +18,16 @@ public class BowlMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.touchCount > 0)
+        if (gameMaster.gamePaused == false)
         {
-            MoveByTouch();
-        }
-        else if (useKeys == true)
-        {
-            MoveByKeyPresses();
+            if (Input.touchCount > 0)
+            {
+                MoveByTouch();
+            }
+            else if (useKeys == true)
+            {
+                MoveByKeyPresses();
+            }
         }
     }
 

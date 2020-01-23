@@ -9,11 +9,6 @@ public class GameMaster : MonoBehaviour
 
     public int score;
 
-    void Update()
-    {
-        
-    }
-
     public void AddScore(int amount)
     {
         score += amount;

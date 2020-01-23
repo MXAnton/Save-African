@@ -28,8 +28,11 @@ public class CloudController : MonoBehaviour
 
     void Update()
     {
-        waterdropMovementSpeed = waterdropMovementSpeed + 0.001f * waterdropMovementSpeed * 5 * Time.deltaTime;
-        waterdropSpawnDelay = waterdropSpawnDelay - 0.05f / waterdropSpawnDelay / 2 * Time.deltaTime;
+        if (gameMaster.gamePaused == false)
+        {
+            waterdropMovementSpeed += 0.001f * waterdropMovementSpeed * 5 * Time.deltaTime;
+            waterdropSpawnDelay -= 0.05f / waterdropSpawnDelay / 2 * Time.deltaTime;
+        }
     }
 
     IEnumerator SpawnWaterdrop()
@@ -43,6 +46,10 @@ public class CloudController : MonoBehaviour
                 GameObject newWaterdrop = Instantiate(waterdrop, new Vector2(Random.Range(minX, maxX), spawnYPosition), Quaternion.identity);
                 newWaterdrop.GetComponent<WaterdropController>().cloudController = this;
                 yield return new WaitForSeconds(waterdropSpawnDelay);
+            }
+            else
+            {
+                yield return new WaitForSeconds(0.1f);
             }
         }
     }
