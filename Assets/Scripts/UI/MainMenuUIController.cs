@@ -6,13 +6,21 @@ using TMPro;
 
 public class MainMenuUIController : MonoBehaviour
 {
-    public GameObject toContainer;
+    GameObject toContainer;
 
-    public TextMeshProUGUI[] highscoreTexts = new TextMeshProUGUI[10];
+    public TextMeshProUGUI latestScoreText;
+    public TextMeshProUGUI highscoreText;
+    //public TextMeshProUGUI[] highscoreTexts = new TextMeshProUGUI[10];
 
-    public void Play()
+    private void Start()
     {
-        SceneManager.LoadScene(1);
+        UpdateShowedScores();
+    }
+
+    public void Play(GameObject fromContainer)
+    {
+        fromContainer.GetComponent<Animator>().SetTrigger("Out");
+        StartCoroutine(ChangeScene(1, 1));
     }
 
     public void Quit()
@@ -40,14 +48,23 @@ public class MainMenuUIController : MonoBehaviour
         whichGameObject.SetActive(false);
     }
 
-    public void UpdateHighscoreList()
+    IEnumerator ChangeScene(int newScene, float time)
     {
-        for (int i = 0; i < 10; i++)
-        {
-            string highscoreToGet = "highscore" + i;
-            int highscore = PlayerPrefs.GetInt(highscoreToGet);
+        yield return new WaitForSeconds(time);
+        SceneManager.LoadScene(newScene);
+    }
 
-            highscoreTexts[i].text = i + 1 + ": " + highscore;
-        }
+    public void UpdateShowedScores()
+    {
+        int latestScore = PlayerPrefs.GetInt("latestScore");
+        latestScoreText.text = "" + latestScore;
+
+        int highscore = PlayerPrefs.GetInt("highscore");
+        highscoreText.text = "" + highscore;
+    }
+
+    public void OpenWebsite()
+    {
+        Application.OpenURL("http://saveafricanthegame.tk/");
     }
 }

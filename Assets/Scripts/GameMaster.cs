@@ -13,15 +13,19 @@ public class GameMaster : MonoBehaviour
     public int health = 3;
 
     public int score;
-    public int[] localHighscores = new int[10];
+    public int latestScore;
+    public int highscore;
+    //public int[] localHighscores = new int[10];
 
     private void Start()
     {
-        for (int i = 0; i < 10; i++)
-        {
-            string highscoreToGet = "highscore" + i;
-            localHighscores[i] = PlayerPrefs.GetInt(highscoreToGet);
-        }
+        latestScore = PlayerPrefs.GetInt("latestScore");
+        highscore = PlayerPrefs.GetInt("highscore");
+        //for (int i = 0; i < 10; i++)
+        //{
+        //    string highscoreToGet = "highscore" + i;
+        //    localHighscores[i] = PlayerPrefs.GetInt(highscoreToGet);
+        //}
     }
 
     public void AddScore(int amount)
@@ -31,30 +35,40 @@ public class GameMaster : MonoBehaviour
 
     public void SaveScore()
     {
-        if (score > localHighscores[localHighscores.Length -1])
+        if (score > highscore)
         {
-            // Replace worst highscore with new highscore and sort the highscores
-            localHighscores[localHighscores.Length -1] = score;
-            Array.Sort(localHighscores);
-            Array.Reverse(localHighscores);
-
-            // Save new highscorelist
-            for (int i = 0; i < 10; i++)
-            {
-                string highscoreToSet = "highscore" + i;
-                PlayerPrefs.SetInt(highscoreToSet, localHighscores[i]);
-            }
-            PlayerPrefs.Save();
+            PlayerPrefs.SetInt("highscore", score);
         }
+        PlayerPrefs.SetInt("latestScore", score);
+
+        PlayerPrefs.Save();
+
+        //if (score > localHighscores[localHighscores.Length -1])
+        //{
+        //    // Replace worst highscore with new highscore and sort the highscores
+        //    localHighscores[localHighscores.Length -1] = score;
+        //    Array.Sort(localHighscores);
+        //    Array.Reverse(localHighscores);
+
+        //    // Save new highscorelist
+        //    for (int i = 0; i < 10; i++)
+        //    {
+        //        string highscoreToSet = "highscore" + i;
+        //        PlayerPrefs.SetInt(highscoreToSet, localHighscores[i]);
+        //    }
+        //    PlayerPrefs.Save();
+        //}
     }
 
     public void ResetHighscores()
     {
-        for (int i = 0; i < 10; i++)
-        {
-            string highscoreToReset = "highscore" + i;
-            PlayerPrefs.DeleteKey(highscoreToReset);
-        }
+        PlayerPrefs.DeleteKey("latestScore");
+        PlayerPrefs.DeleteKey("highscore");
+        //for (int i = 0; i < 10; i++)
+        //{
+        //    string highscoreToReset = "highscore" + i;
+        //    PlayerPrefs.DeleteKey(highscoreToReset);
+        //}
     }
 
     public void DamagePlayer(int amount)

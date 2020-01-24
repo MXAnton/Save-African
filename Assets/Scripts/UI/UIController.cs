@@ -43,18 +43,19 @@ public class UIController : MonoBehaviour
     public void OnRestartLevel(GameObject fromMenu)
     {
         fromMenu.GetComponent<Animator>().SetTrigger("Out");
-        StartCoroutine(RestartLevel(1));
+        StartCoroutine(ChangeScene(1, 1));
     }
 
-    IEnumerator RestartLevel(float time)
+    public void MainMenu(GameObject fromMenu)
+    {
+        fromMenu.GetComponent<Animator>().SetTrigger("Out");
+        StartCoroutine(ChangeScene(0, 1));
+    }
+
+    IEnumerator ChangeScene(int newScene, float time)
     {
         yield return new WaitForSeconds(time);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public void MainMenu()
-    {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(newScene);
     }
 
     public void ShowGameOverMenu()
