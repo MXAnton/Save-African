@@ -28,7 +28,7 @@ public class CloudController : MonoBehaviour
 
     void Update()
     {
-        if (gameMaster.gamePaused == false)
+        if (gameMaster.gamePaused == false && gameMaster.gameOn == true)
         {
             waterdropMovementSpeed += 0.001f * waterdropMovementSpeed * 5 * Time.deltaTime;
             waterdropSpawnDelay -= 0.05f / waterdropSpawnDelay / 2 * Time.deltaTime;

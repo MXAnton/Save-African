@@ -18,7 +18,7 @@ public class BowlMovement : MonoBehaviour
 
     void Update()
     {
-        if (gameMaster.gamePaused == false)
+        if (gameMaster.gamePaused == false && gameMaster.gameOn == true)
         {
             if (Input.touchCount > 0)
             {

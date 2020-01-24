@@ -18,20 +18,21 @@ public class WaterdropController : MonoBehaviour
 
     void Update()
     {
-        if (gameMaster.gamePaused == false)
+        if (gameMaster.gamePaused == false && gameMaster.gameOn == true)
         {
             transform.position = new Vector2(transform.position.x, transform.position.y - movementSpeed * Time.deltaTime);
         }
 
         if (transform.position.y < -5)
         {
+            gameMaster.DamagePlayer(1);
             Destroy(gameObject);
         }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (gameMaster.gamePaused == false)
+        if (gameMaster.gamePaused == false && gameMaster.gameOn == true)
         {
             if (collision.gameObject.tag == "Bowl")
             {
