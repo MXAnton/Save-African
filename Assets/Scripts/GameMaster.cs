@@ -15,17 +15,11 @@ public class GameMaster : MonoBehaviour
     public int score;
     public int latestScore;
     public int highscore;
-    //public int[] localHighscores = new int[10];
 
     private void Start()
     {
         latestScore = PlayerPrefs.GetInt("latestScore");
         highscore = PlayerPrefs.GetInt("highscore");
-        //for (int i = 0; i < 10; i++)
-        //{
-        //    string highscoreToGet = "highscore" + i;
-        //    localHighscores[i] = PlayerPrefs.GetInt(highscoreToGet);
-        //}
     }
 
     public void AddScore(int amount)
@@ -75,9 +69,18 @@ public class GameMaster : MonoBehaviour
     {
         health -= amount;
 
-        if (health <= 0)
+        switch (health)
         {
-            GameOver();
+            case 2:
+                uiController.RemoveLife(3);
+                break;
+            case 1:
+                uiController.RemoveLife(2);
+                break;
+            default:
+                uiController.RemoveLife(1);
+                GameOver();
+                break;
         }
     }
 

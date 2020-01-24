@@ -13,6 +13,8 @@ public class UIController : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject gameOverMenu;
 
+    public GameObject[] lifes;
+
     void Update()
     {
         scoreText.text = "" + gameMaster.score;
@@ -61,5 +63,10 @@ public class UIController : MonoBehaviour
     public void ShowGameOverMenu()
     {
         gameOverMenu.SetActive(true);
+    }
+
+    public void RemoveLife(int whichLife)
+    {
+        lifes[whichLife - 1].SetActive(false);
     }
 }
