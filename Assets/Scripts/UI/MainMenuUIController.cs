@@ -5,28 +5,34 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuUIController : MonoBehaviour
 {
-    public GameObject main;
-    public GameObject settings;
+    //public GameObject main;
+    //public GameObject highscores;
+    //public GameObject upgrades;
+    //public GameObject shop;
+    //public GameObject settings;
+
+    public GameObject toContainer;
 
     public void Play()
     {
         SceneManager.LoadScene(1);
     }
 
-    public void ShowHighscores()
+    public void ChangeMenuContainer(GameObject fromContainer)
     {
-        Debug.Log("Show highscores");
+        fromContainer.GetComponent<Animator>().SetTrigger("Out");
+        toContainer.SetActive(true);
+        StartCoroutine(DisableMenuContainer(fromContainer, 1));
     }
 
-    public void ShowSettings()
+    IEnumerator DisableMenuContainer(GameObject whichGameObject, float time)
     {
-        main.SetActive(false);
-        settings.SetActive(true);
+        yield return new WaitForSeconds(time);
+        whichGameObject.SetActive(false);
     }
 
-    public void Back()
+    public void SetToContainer(GameObject newToContainer)
     {
-        settings.SetActive(false);
-        main.SetActive(true);
+        toContainer = newToContainer;
     }
 }
