@@ -5,18 +5,23 @@ using UnityEngine;
 public class CloudController : MonoBehaviour
 {
     public GameMaster gameMaster;
-
+    [Space]
     public GameObject waterdrop;
 
     public float spawnYPosition = 4.5f;
     public float minX = -3;
     public float maxX = 3;
 
-    public float startWaterdropMovementSpeed = 1f;
+    [Header("Movement/Spawning rate")]
+    public float startWaterdropMovementSpeed = 1.4f;
+    public float maxWaterdropMovementSpeed = 6f;
     public float waterdropMovementSpeed;
-
-    public float startWaterdropSpawnDelay = 0.5f;
+    [Space]
+    public float startWaterdropSpawnDelay = 4f;
+    public float minWaterdropSpawnDelay = 0.2f;
     public float waterdropSpawnDelay;
+    [Space]
+    public float accelerationSpeed = 0.01f;
 
     void Start()
     {
@@ -30,8 +35,14 @@ public class CloudController : MonoBehaviour
     {
         if (gameMaster.gamePaused == false && gameMaster.gameOn == true)
         {
-            waterdropMovementSpeed += 0.001f * waterdropMovementSpeed * 5 * Time.deltaTime;
-            waterdropSpawnDelay -= 0.05f / waterdropSpawnDelay / 2 * Time.deltaTime;
+            if (waterdropMovementSpeed < maxWaterdropMovementSpeed)
+            {
+                waterdropMovementSpeed += accelerationSpeed * Time.deltaTime;
+            }
+            if (waterdropSpawnDelay > minWaterdropSpawnDelay)
+            {
+                waterdropSpawnDelay -= accelerationSpeed * Time.deltaTime;
+            }
         }
     }
 

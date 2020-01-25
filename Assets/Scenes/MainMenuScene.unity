@@ -1733,7 +1733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 032a30387fef5254cab2fc96f8bbf89e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  latestScoreText: {fileID: 1657352040}
+  lastScoreText: {fileID: 1657352040}
   highscoreText: {fileID: 909494686}
 --- !u!114 &870138021
 MonoBehaviour:
@@ -3002,7 +3002,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 150, y: 130}
+  m_AnchoredPosition: {x: 150, y: 200}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1518557981
@@ -3262,7 +3262,7 @@ GameObject:
   - component: {fileID: 1657352041}
   - component: {fileID: 1657352040}
   m_Layer: 5
-  m_Name: LatestScoreAmountText
+  m_Name: LastScoreAmountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3617,7 +3617,7 @@ GameObject:
   - component: {fileID: 1954210379}
   - component: {fileID: 1954210378}
   m_Layer: 5
-  m_Name: LatestScoreText
+  m_Name: LastScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3660,7 +3660,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Latest
+  m_text: 'Last
 
     Score'
   m_isRightToLeft: 0
@@ -3731,7 +3731,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1954210378}
-    characterCount: 12
+    characterCount: 10
     spriteCount: 0
     spaceCount: 1
     wordCount: 2
@@ -3840,7 +3840,7 @@ GameObject:
   - component: {fileID: 2047330800}
   - component: {fileID: 2047330799}
   m_Layer: 5
-  m_Name: LatestScore
+  m_Name: LastScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

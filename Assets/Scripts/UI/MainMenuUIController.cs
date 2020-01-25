@@ -8,7 +8,7 @@ public class MainMenuUIController : MonoBehaviour
 {
     GameObject toContainer;
 
-    public TextMeshProUGUI latestScoreText;
+    public TextMeshProUGUI lastScoreText;
     public TextMeshProUGUI highscoreText;
     //public TextMeshProUGUI[] highscoreTexts = new TextMeshProUGUI[10];
 
@@ -56,8 +56,8 @@ public class MainMenuUIController : MonoBehaviour
 
     public void UpdateShowedScores()
     {
-        int latestScore = PlayerPrefs.GetInt("latestScore");
-        latestScoreText.text = "" + latestScore;
+        int lastScore = PlayerPrefs.GetInt("latestScore");
+        lastScoreText.text = "" + lastScore;
 
         int highscore = PlayerPrefs.GetInt("highscore");
         highscoreText.text = "" + highscore;
