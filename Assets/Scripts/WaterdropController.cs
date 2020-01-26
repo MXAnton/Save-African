@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class WaterdropController : MonoBehaviour
 {
+    public AudioSource audioSource;
+    public AudioClip waterdropClip;
+
+    public SoundsController soundsController;
     public GameMaster gameMaster;
     public CloudController cloudController;
 
@@ -11,6 +15,8 @@ public class WaterdropController : MonoBehaviour
 
     void Start()
     {
+        audioSource = GameObject.FindWithTag("GameMaster").GetComponent<AudioSource>();
+        soundsController = GameObject.FindWithTag("GameMaster").GetComponent<SoundsController>();
         gameMaster = GameObject.FindWithTag("GameMaster").GetComponent<GameMaster>();
 
         movementSpeed = Random.Range(cloudController.waterdropMovementSpeed - 0.1f, cloudController.waterdropMovementSpeed + 0.1f);
@@ -25,6 +31,9 @@ public class WaterdropController : MonoBehaviour
 
         if (transform.position.y < -5)
         {
+            audioSource.volume = soundsController.soundEffectsVolume;
+            audioSource.PlayOneShot(waterdropClip);
+
             gameMaster.DamagePlayer(1);
             Destroy(gameObject);
         }
@@ -36,6 +45,9 @@ public class WaterdropController : MonoBehaviour
         {
             if (collision.gameObject.tag == "Bowl")
             {
+                audioSource.volume = soundsController.soundEffectsVolume;
+                audioSource.PlayOneShot(waterdropClip);
+
                 gameMaster.AddScore(1);
                 Destroy(gameObject);
             }
