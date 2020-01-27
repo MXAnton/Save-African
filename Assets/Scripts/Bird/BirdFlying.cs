@@ -29,21 +29,16 @@ public class BirdFlying : MonoBehaviour
             if (directionRight == false)
             {
                 transform.position = new Vector2(transform.position.x - flyingSpeed * Time.deltaTime, transform.position.y);
-
-                if (transform.position.x < -5)
-                {
-                    Destroy(gameObject);
-                }
             }
             else
             {
                 transform.position = new Vector2(transform.position.x + flyingSpeed * Time.deltaTime, transform.position.y);
-
-                if (transform.position.x > 5)
-                {
-                    Destroy(gameObject);
-                }
             }
+        }
+
+        if (transform.position.x < -5 || transform.position.x > 5)
+        {
+            Destroy(gameObject);
         }
     }
 }

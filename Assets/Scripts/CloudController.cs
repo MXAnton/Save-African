@@ -61,41 +61,25 @@ public class CloudController : MonoBehaviour
             {
                 GameObject newWaterdrop;
                 float whichObjectToSpawn = Random.Range(0f, 1f);
+                float xSpawnPosition = Random.Range(minX, maxX);
+                xSpawnPosition = Mathf.Round(xSpawnPosition * 2.5f) / 2.5f;
 
                 if (whichObjectToSpawn <= dirtyWaterSpawnRate)
                 {
-                    newWaterdrop = Instantiate(waterdropDirty, new Vector2(Random.Range(minX, maxX), spawnYPosition), Quaternion.identity);
+                    newWaterdrop = Instantiate(waterdropDirty, new Vector2(xSpawnPosition, spawnYPosition), Quaternion.identity);
 
                     newWaterdrop.GetComponent<WaterdropController>().cloudController = this;
                 }
                 else
                 {
-                    newWaterdrop = Instantiate(waterdrop, new Vector2(Random.Range(minX, maxX), spawnYPosition), Quaternion.identity);
+                    newWaterdrop = Instantiate(waterdrop, new Vector2(xSpawnPosition, spawnYPosition), Quaternion.identity);
 
                     newWaterdrop.GetComponent<WaterdropController>().cloudController = this;
                 }
 
-                if (whichObjectToSpawn <= dirtyWaterSpawnRate + birdSpawnRate)
+                if (whichObjectToSpawn >= 1 - birdSpawnRate)
                 {
-                    float direction = Random.Range(0f, 1f);
-
-                    if (direction < 0.5f)
-                    {
-                        newWaterdrop = Instantiate(bird, new Vector2(-5, spawnYPosition), Quaternion.identity);
-                        newWaterdrop.GetComponent<BirdFlying>().directionRight = false;
-                    }
-                    else
-                    {
-                        newWaterdrop = Instantiate(bird, new Vector2(5, spawnYPosition), Quaternion.identity);
-                        newWaterdrop.GetComponent<BirdFlying>().directionRight = true;
-                    }
-
-                    float newYPosition = Random.Range(newWaterdrop.GetComponent<BirdFlying>().minYSpawnPos,
-                                                    newWaterdrop.GetComponent<BirdFlying>().maxYSpawnPos);
-                    newWaterdrop.transform.position = new Vector2(newWaterdrop.transform.position.x, newYPosition);
-
-                    newWaterdrop.GetComponent<BirdFlying>().cloudController = this;
-                    newWaterdrop.GetComponent<BirdPoop>().cloudController = this;
+                    SpawnBird();
                 }
 
                 yield return new WaitForSeconds(waterdropSpawnDelay);
@@ -105,5 +89,29 @@ public class CloudController : MonoBehaviour
                 yield return new WaitForSeconds(0.1f);
             }
         }
+    }
+
+    void SpawnBird()
+    {
+        GameObject newBird;
+        float direction = Random.Range(0f, 1f);
+
+        if (direction < 0.5f)
+        {
+            newBird = Instantiate(bird, new Vector2(-5, spawnYPosition), Quaternion.identity);
+            newBird.GetComponent<BirdFlying>().directionRight = false;
+        }
+        else
+        {
+            newBird = Instantiate(bird, new Vector2(5, spawnYPosition), Quaternion.identity);
+            newBird.GetComponent<BirdFlying>().directionRight = true;
+        }
+
+        float newYPosition = Random.Range(newBird.GetComponent<BirdFlying>().minYSpawnPos,
+                                        newBird.GetComponent<BirdFlying>().maxYSpawnPos);
+        newBird.transform.position = new Vector2(newBird.transform.position.x, newYPosition);
+
+        newBird.GetComponent<BirdFlying>().cloudController = this;
+        newBird.GetComponent<BirdPoop>().cloudController = this;
     }
 }

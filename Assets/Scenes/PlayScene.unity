@@ -522,14 +522,14 @@ MonoBehaviour:
   minX: -2.2
   maxX: 2.2
   startWaterdropMovementSpeed: 2
-  maxWaterdropMovementSpeed: 6
+  maxWaterdropMovementSpeed: 5
   waterdropMovementSpeed: 0
   startWaterdropSpawnDelay: 3.7
-  minWaterdropSpawnDelay: 0.3
+  minWaterdropSpawnDelay: 0.5
   waterdropSpawnDelay: 0
   accelerationSpeed: 0.02
   dirtyWaterSpawnRate: 0.1
-  birdSpawnRate: 0.05
+  birdSpawnRate: 0.08
 --- !u!1 &166181260
 GameObject:
   m_ObjectHideFlags: 0
