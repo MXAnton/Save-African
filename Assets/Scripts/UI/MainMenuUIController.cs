@@ -19,10 +19,17 @@ public class MainMenuUIController : MonoBehaviour
     public Slider musicVolumeSlider;
     public Sprite[] sliderHandleSprites;
 
+    [Header("Money Vars")]
+    public int waterdrops;
+    public int diamonds;
+
+    public TextMeshProUGUI waterdropsText;
+    public TextMeshProUGUI diamondsText;
+
     private void Start()
     {
         UpdateShowedScores();
-
+        UpdateShowedCurrencies();
         musicVolumeSlider.value = soundsController.musicVolume;
         soundEffectsVolumeSlider.value = soundsController.soundEffectsVolume;
     }
@@ -71,6 +78,15 @@ public class MainMenuUIController : MonoBehaviour
 
         int highscore = PlayerPrefs.GetInt("highscore");
         highscoreText.text = "" + highscore;
+    }
+
+    public void UpdateShowedCurrencies()
+    {
+        waterdrops = PlayerPrefs.GetInt("waterdrops");
+        waterdropsText.text = "" + waterdrops;
+
+        diamonds = PlayerPrefs.GetInt("diamonds");
+        diamondsText.text = "" + diamonds;
     }
 
     public void OpenWebsite()
@@ -138,5 +154,15 @@ public class MainMenuUIController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void SaveCurrencies()
+    {
+        PlayerPrefs.SetInt("waterdrops", waterdrops);
+        PlayerPrefs.SetInt("diamonds", diamonds);
+
+        PlayerPrefs.Save();
+
+        UpdateShowedCurrencies();
     }
 }

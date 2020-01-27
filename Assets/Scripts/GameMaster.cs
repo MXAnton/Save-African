@@ -35,23 +35,11 @@ public class GameMaster : MonoBehaviour
         }
         PlayerPrefs.SetInt("latestScore", score);
 
+        int newWaterdropsAmount = PlayerPrefs.GetInt("waterdrops");
+        newWaterdropsAmount += score;
+        PlayerPrefs.SetInt("waterdrops", newWaterdropsAmount);
+
         PlayerPrefs.Save();
-
-        //if (score > localHighscores[localHighscores.Length -1])
-        //{
-        //    // Replace worst highscore with new highscore and sort the highscores
-        //    localHighscores[localHighscores.Length -1] = score;
-        //    Array.Sort(localHighscores);
-        //    Array.Reverse(localHighscores);
-
-        //    // Save new highscorelist
-        //    for (int i = 0; i < 10; i++)
-        //    {
-        //        string highscoreToSet = "highscore" + i;
-        //        PlayerPrefs.SetInt(highscoreToSet, localHighscores[i]);
-        //    }
-        //    PlayerPrefs.Save();
-        //}
     }
 
     public void ResetHighscores()
