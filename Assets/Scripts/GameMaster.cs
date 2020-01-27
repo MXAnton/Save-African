@@ -77,10 +77,14 @@ public class GameMaster : MonoBehaviour
             case 1:
                 uiController.RemoveLife(2);
                 break;
-            default:
+            case 0:
                 uiController.RemoveLife(1);
                 GameOver();
                 break;
+            //default:
+            //    uiController.RemoveLife(1);
+            //    GameOver();
+            //    break;
         }
     }
 

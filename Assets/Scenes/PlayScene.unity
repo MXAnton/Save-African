@@ -515,16 +515,21 @@ MonoBehaviour:
   gameMaster: {fileID: 862612618}
   waterdrop: {fileID: 4074104997341702900, guid: 1a2b6252b35367a4ab9e3229b9b91da2,
     type: 3}
+  waterdropDirty: {fileID: 2559936424013430131, guid: 73a54d6d6daeac0428134e5236ee31ca,
+    type: 3}
+  bird: {fileID: 5865271987902008023, guid: 561b3d27d19d00648bebe2eadd0df472, type: 3}
   spawnYPosition: 4.5
   minX: -2.2
   maxX: 2.2
-  startWaterdropMovementSpeed: 1.4
+  startWaterdropMovementSpeed: 2
   maxWaterdropMovementSpeed: 6
   waterdropMovementSpeed: 0
-  startWaterdropSpawnDelay: 4
-  minWaterdropSpawnDelay: 0.2
+  startWaterdropSpawnDelay: 3.7
+  minWaterdropSpawnDelay: 0.3
   waterdropSpawnDelay: 0
   accelerationSpeed: 0.02
+  dirtyWaterSpawnRate: 0.1
+  birdSpawnRate: 0.05
 --- !u!1 &166181260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,7 +1049,7 @@ Transform:
   m_GameObject: {fileID: 319863622}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -3.8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 1517059885}
   - {fileID: 32240812}
@@ -3924,15 +3929,15 @@ LineRenderer:
       serializedVersion: 2
       key0: {r: 0.21568629, g: 0.08235294, b: 0, a: 1}
       key1: {r: 0.21568629, g: 0.08235294, b: 0, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key2: {r: 0.21568629, g: 0.08235294, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 65535
-      ctime2: 0
+      ctime1: 64379
+      ctime2: 65535
       ctime3: 0
       ctime4: 0
       ctime5: 0
@@ -3947,7 +3952,7 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_NumColorKeys: 2
+      m_NumColorKeys: 3
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 2

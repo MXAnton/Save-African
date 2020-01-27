@@ -11,6 +11,10 @@ public class WaterdropController : MonoBehaviour
     public GameMaster gameMaster;
     public CloudController cloudController;
 
+    public bool isDirty = false;
+
+    public float movementSpeedMultiplier = 1;
+
     float movementSpeed;
 
     void Start()
@@ -20,6 +24,7 @@ public class WaterdropController : MonoBehaviour
         gameMaster = GameObject.FindWithTag("GameMaster").GetComponent<GameMaster>();
 
         movementSpeed = Random.Range(cloudController.waterdropMovementSpeed - 0.1f, cloudController.waterdropMovementSpeed + 0.1f);
+        movementSpeed *= movementSpeedMultiplier;
     }
 
     void Update()
@@ -34,7 +39,10 @@ public class WaterdropController : MonoBehaviour
             audioSource.volume = soundsController.soundEffectsVolume;
             audioSource.PlayOneShot(waterdropClip);
 
-            gameMaster.DamagePlayer(1);
+            if (isDirty == false)
+            {
+                gameMaster.DamagePlayer(1);
+            }
             Destroy(gameObject);
         }
     }
@@ -48,7 +56,14 @@ public class WaterdropController : MonoBehaviour
                 audioSource.volume = soundsController.soundEffectsVolume;
                 audioSource.PlayOneShot(waterdropClip);
 
-                gameMaster.AddScore(1);
+                if (isDirty == false)
+                {
+                    gameMaster.AddScore(1);
+                }
+                else
+                {
+                    gameMaster.DamagePlayer(1);
+                }
                 Destroy(gameObject);
             }
         }

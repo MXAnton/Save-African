@@ -7,6 +7,8 @@ public class CloudController : MonoBehaviour
     public GameMaster gameMaster;
     [Space]
     public GameObject waterdrop;
+    public GameObject waterdropDirty;
+    public GameObject bird;
 
     public float spawnYPosition = 4.5f;
     public float minX = -3;
@@ -22,6 +24,9 @@ public class CloudController : MonoBehaviour
     public float waterdropSpawnDelay;
     [Space]
     public float accelerationSpeed = 0.01f;
+    [Space]
+    public float dirtyWaterSpawnRate = 0.1f; // 0-1
+    public float birdSpawnRate = 0.05f; // 0-1
 
     void Start()
     {
@@ -54,8 +59,45 @@ public class CloudController : MonoBehaviour
         {
             if (gameMaster.gamePaused == false)
             {
-                GameObject newWaterdrop = Instantiate(waterdrop, new Vector2(Random.Range(minX, maxX), spawnYPosition), Quaternion.identity);
-                newWaterdrop.GetComponent<WaterdropController>().cloudController = this;
+                GameObject newWaterdrop;
+                float whichObjectToSpawn = Random.Range(0f, 1f);
+
+                if (whichObjectToSpawn <= dirtyWaterSpawnRate)
+                {
+                    newWaterdrop = Instantiate(waterdropDirty, new Vector2(Random.Range(minX, maxX), spawnYPosition), Quaternion.identity);
+
+                    newWaterdrop.GetComponent<WaterdropController>().cloudController = this;
+                }
+                else
+                {
+                    newWaterdrop = Instantiate(waterdrop, new Vector2(Random.Range(minX, maxX), spawnYPosition), Quaternion.identity);
+
+                    newWaterdrop.GetComponent<WaterdropController>().cloudController = this;
+                }
+
+                if (whichObjectToSpawn <= dirtyWaterSpawnRate + birdSpawnRate)
+                {
+                    float direction = Random.Range(0f, 1f);
+
+                    if (direction < 0.5f)
+                    {
+                        newWaterdrop = Instantiate(bird, new Vector2(-5, spawnYPosition), Quaternion.identity);
+                        newWaterdrop.GetComponent<BirdFlying>().directionRight = false;
+                    }
+                    else
+                    {
+                        newWaterdrop = Instantiate(bird, new Vector2(5, spawnYPosition), Quaternion.identity);
+                        newWaterdrop.GetComponent<BirdFlying>().directionRight = true;
+                    }
+
+                    float newYPosition = Random.Range(newWaterdrop.GetComponent<BirdFlying>().minYSpawnPos,
+                                                    newWaterdrop.GetComponent<BirdFlying>().maxYSpawnPos);
+                    newWaterdrop.transform.position = new Vector2(newWaterdrop.transform.position.x, newYPosition);
+
+                    newWaterdrop.GetComponent<BirdFlying>().cloudController = this;
+                    newWaterdrop.GetComponent<BirdPoop>().cloudController = this;
+                }
+
                 yield return new WaitForSeconds(waterdropSpawnDelay);
             }
             else
