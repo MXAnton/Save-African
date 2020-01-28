@@ -24,7 +24,7 @@ public class BirdPoop : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.x > dropPosition - 0.03f && transform.position.x < dropPosition + 0.03f && hasDropped == false)
+        if (transform.position.x > dropPosition - 0.06f && transform.position.x < dropPosition + 0.06f && hasDropped == false)
         {
             DropPoop();
         }

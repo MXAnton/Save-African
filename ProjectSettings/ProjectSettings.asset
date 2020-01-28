@@ -118,7 +118,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.6
+  bundleVersion: 0.75
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -838,7 +838,7 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   cloudProjectId: 2e336483-2841-4218-90ca-d4376fa92984
   framebufferDepthMemorylessMode: 0
-  projectName: Save African Child
+  projectName: Save African the Game
   organizationId: mx_anton
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

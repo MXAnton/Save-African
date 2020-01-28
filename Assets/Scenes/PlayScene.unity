@@ -3831,6 +3831,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffectsVolume: 1
   musicVolume: 1
+--- !u!114 &1741869637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741869633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 197ad56d16c2f78468e4c1caddeca0f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inGame: 1
 --- !u!1 &1770696310
 GameObject:
   m_ObjectHideFlags: 0
@@ -4521,6 +4534,11 @@ PrefabInstance:
       propertyPath: uiController
       value: 
       objectReference: {fileID: 1866741740}
+    - target: {fileID: 126805099571206125, guid: 62bf61db54049bf409ccc395f4ccda6d,
+        type: 3}
+      propertyPath: adManager
+      value: 
+      objectReference: {fileID: 1741869637}
     - target: {fileID: 126805099571206126, guid: 62bf61db54049bf409ccc395f4ccda6d,
         type: 3}
       propertyPath: m_LocalPosition.x

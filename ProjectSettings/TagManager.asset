@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GameMaster
   - Bowl
+  - MainMenu
   layers:
   - Default
   - TransparentFX

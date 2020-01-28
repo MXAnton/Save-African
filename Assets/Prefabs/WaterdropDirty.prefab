@@ -127,4 +127,4 @@ MonoBehaviour:
   gameMaster: {fileID: 0}
   cloudController: {fileID: 0}
   isDirty: 1
-  movementSpeedMultiplier: 0.8
+  movementSpeedMultiplier: 1

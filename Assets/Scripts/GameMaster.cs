@@ -5,7 +5,9 @@ using System;
 
 public class GameMaster : MonoBehaviour
 {
+    public AdManager adManager;
     public UIController uiController;
+    public MainMenuUIController mainMenuUIController;
 
     public bool gameOn = true;
     public bool gamePaused = false;
@@ -20,6 +22,11 @@ public class GameMaster : MonoBehaviour
     {
         latestScore = PlayerPrefs.GetInt("latestScore");
         highscore = PlayerPrefs.GetInt("highscore");
+
+        if (GameObject.FindWithTag("MainMenu"))
+        {
+            mainMenuUIController = GameObject.FindWithTag("MainMenu").GetComponent<MainMenuUIController>();
+        }
     }
 
     public void AddScore(int amount)
@@ -80,6 +87,34 @@ public class GameMaster : MonoBehaviour
     {
         gameOn = false;
         SaveScore();
+
+        int newGameovers = PlayerPrefs.GetInt("gameovers");
+        newGameovers++;
+        if (newGameovers >= 4)
+        {
+            PlayerPrefs.SetInt("gameovers", 0);
+            adManager.ShowNonRewardedAd();
+        }
+        else
+        {
+            PlayerPrefs.SetInt("gameovers", newGameovers);
+        }
+        PlayerPrefs.Save();
+
         uiController.ShowGameOverMenu();
+    }
+
+    public void AddDiamonds(int amount)
+    {
+        int newDiamondsAmount = PlayerPrefs.GetInt("diamonds");
+        newDiamondsAmount += amount;
+        PlayerPrefs.SetInt("diamonds", newDiamondsAmount);
+
+        PlayerPrefs.Save();
+
+        if (mainMenuUIController != null)
+        {
+            mainMenuUIController.UpdateShowedCurrencies();
+        }
     }
 }

@@ -23,7 +23,8 @@ public class WaterdropController : MonoBehaviour
         soundsController = GameObject.FindWithTag("GameMaster").GetComponent<SoundsController>();
         gameMaster = GameObject.FindWithTag("GameMaster").GetComponent<GameMaster>();
 
-        movementSpeed = Random.Range(cloudController.waterdropMovementSpeed - 0.1f, cloudController.waterdropMovementSpeed + 0.1f);
+        movementSpeed = cloudController.waterdropMovementSpeed;
+                        //Random.Range(cloudController.waterdropMovementSpeed - 0.1f, cloudController.waterdropMovementSpeed + 0.1f);
         movementSpeed *= movementSpeedMultiplier;
     }
 
