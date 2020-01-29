@@ -24,8 +24,19 @@ public class PlayerAppearance : MonoBehaviour
 
     public Color armColor;
 
+    [Header("Clothes")]
+    public Clothes clothes;
+
+    public SpriteRenderer hat;
+    public SpriteRenderer shirt;
+    public SpriteRenderer pants;
+
     private void Start()
     {
+        SetHat();
+        SetShirt();
+        SetPants();
+
         newXPosition = transform.position.x;
         oldXPosition = newXPosition;
     }
@@ -72,5 +83,25 @@ public class PlayerAppearance : MonoBehaviour
 
         line.SetPosition(0, startPosition.position);
         line.SetPosition(1, stopPosition.position);
+    }
+
+
+    void SetHat()
+    {
+        int newHat = PlayerPrefs.GetInt("usedHat");
+
+        hat.sprite = clothes.hats[newHat];
+    }
+
+    void SetShirt()
+    {
+        int newShirt = PlayerPrefs.GetInt("usedShirt");
+
+        shirt.sprite = clothes.shirts[newShirt];
+    }
+
+    void SetPants()
+    {
+
     }
 }

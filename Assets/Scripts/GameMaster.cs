@@ -90,7 +90,7 @@ public class GameMaster : MonoBehaviour
 
         int newGameovers = PlayerPrefs.GetInt("gameovers");
         newGameovers++;
-        if (newGameovers >= 4)
+        if (newGameovers >= 3)
         {
             PlayerPrefs.SetInt("gameovers", 0);
             adManager.ShowNonRewardedAd();

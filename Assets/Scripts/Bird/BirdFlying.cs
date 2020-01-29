@@ -5,7 +5,10 @@ using UnityEngine;
 public class BirdFlying : MonoBehaviour
 {
     public GameMaster gameMaster;
+    public SoundsController soundsController;
     public CloudController cloudController;
+
+    public AudioSource audioSource;
 
     public float minYSpawnPos;
     public float maxYSpawnPos;
@@ -17,9 +20,13 @@ public class BirdFlying : MonoBehaviour
     private void Start()
     {
         gameMaster = GameObject.FindWithTag("GameMaster").GetComponent<GameMaster>();
+        soundsController = GameObject.FindWithTag("GameMaster").GetComponent<SoundsController>();
+        audioSource = GetComponent<AudioSource>();
 
         flyingSpeed -= Random.Range(cloudController.waterdropMovementSpeed - 0.1f, cloudController.waterdropMovementSpeed + 0.1f);
         flyingSpeed *= birdSpeedMultiplier;
+
+        PlayBirdSound();
     }
 
     void Update()
@@ -40,5 +47,12 @@ public class BirdFlying : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    void PlayBirdSound()
+    {
+        audioSource.volume = soundsController.soundEffectsVolume;
+
+        audioSource.Play();
     }
 }

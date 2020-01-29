@@ -122,9 +122,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
-  waterdropClip: {fileID: 8300000, guid: 542defba08f6d2a4c89913a2ec1e6afc, type: 3}
+  catchClip: {fileID: 8300000, guid: 542defba08f6d2a4c89913a2ec1e6afc, type: 3}
+  landClip: {fileID: 8300000, guid: 542defba08f6d2a4c89913a2ec1e6afc, type: 3}
   soundsController: {fileID: 0}
   gameMaster: {fileID: 0}
   cloudController: {fileID: 0}
   isDirty: 1
+  isDiamond: 0
   movementSpeedMultiplier: 1.5

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 126805099571206126}
   - component: {fileID: 126805099571206125}
+  - component: {fileID: 8154379228938839150}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: GameMaster
@@ -43,8 +44,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfbce6c5ce394df4c8e44c8d716e7715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  adManager: {fileID: 0}
+  uiController: {fileID: 0}
+  mainMenuUIController: {fileID: 0}
   gameOn: 1
   gamePaused: 0
   health: 3
   score: 0
-  localHighscores: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  latestScore: 0
+  highscore: 0
+--- !u!114 &8154379228938839150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126805099571206127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ef643403512d8d458b2da5134298077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hats:
+  - {fileID: -6323698302485887903, guid: 4c66aa4dcc5b8a04ab5e1d45aa40ef46, type: 3}
+  - {fileID: -956257234043727984, guid: 3d162d2e1c378ad489a009fd50c1b3f8, type: 3}
+  - {fileID: -9069563097762300111, guid: 264e836ef728f4c45b6e637724c30f79, type: 3}
+  shirts:
+  - {fileID: -9108235916185779315, guid: 4c66aa4dcc5b8a04ab5e1d45aa40ef46, type: 3}
+  - {fileID: -6591854102567387611, guid: 5743ca41576e106449161db441181daf, type: 3}
+  - {fileID: -3156497413021526541, guid: 7cec82cc406a9b84c8925f8023f5b95e, type: 3}
+  pants: []

@@ -9,6 +9,7 @@ public class CloudController : MonoBehaviour
     public GameObject waterdrop;
     public GameObject waterdropDirty;
     public GameObject bird;
+    public GameObject diamond;
 
     public float spawnYPosition = 4.5f;
     public float minX = -3;
@@ -27,6 +28,7 @@ public class CloudController : MonoBehaviour
     [Space]
     public float dirtyWaterSpawnRate = 0.1f; // 0-1
     public float birdSpawnRate = 0.05f; // 0-1
+    public float diamondSpawnRate = 0.007f; // 0-1
 
     void Start()
     {
@@ -77,9 +79,16 @@ public class CloudController : MonoBehaviour
                     newWaterdrop.GetComponent<WaterdropController>().cloudController = this;
                 }
 
+
                 if (whichObjectToSpawn >= 1 - birdSpawnRate)
                 {
                     SpawnBird();
+                }
+                else if (whichObjectToSpawn >= 1 - birdSpawnRate - diamondSpawnRate)
+                {
+                    GameObject newDiamond = Instantiate(diamond, new Vector2(xSpawnPosition, spawnYPosition), Quaternion.identity);
+
+                    newDiamond.GetComponent<WaterdropController>().cloudController = this;
                 }
 
                 yield return new WaitForSeconds(waterdropSpawnDelay);

@@ -5,13 +5,15 @@ using UnityEngine;
 public class WaterdropController : MonoBehaviour
 {
     public AudioSource audioSource;
-    public AudioClip waterdropClip;
+    public AudioClip catchClip;
+    public AudioClip landClip;
 
     public SoundsController soundsController;
     public GameMaster gameMaster;
     public CloudController cloudController;
 
     public bool isDirty = false;
+    public bool isDiamond = false;
 
     public float movementSpeedMultiplier = 1;
 
@@ -24,7 +26,6 @@ public class WaterdropController : MonoBehaviour
         gameMaster = GameObject.FindWithTag("GameMaster").GetComponent<GameMaster>();
 
         movementSpeed = cloudController.waterdropMovementSpeed;
-                        //Random.Range(cloudController.waterdropMovementSpeed - 0.1f, cloudController.waterdropMovementSpeed + 0.1f);
         movementSpeed *= movementSpeedMultiplier;
     }
 
@@ -38,9 +39,9 @@ public class WaterdropController : MonoBehaviour
         if (transform.position.y < -5)
         {
             audioSource.volume = soundsController.soundEffectsVolume;
-            audioSource.PlayOneShot(waterdropClip);
+            audioSource.PlayOneShot(landClip);
 
-            if (isDirty == false)
+            if (isDirty == false && isDiamond == false)
             {
                 gameMaster.DamagePlayer(1);
             }
@@ -55,15 +56,19 @@ public class WaterdropController : MonoBehaviour
             if (collision.gameObject.tag == "Bowl")
             {
                 audioSource.volume = soundsController.soundEffectsVolume;
-                audioSource.PlayOneShot(waterdropClip);
+                audioSource.PlayOneShot(catchClip);
 
-                if (isDirty == false)
+                if (isDiamond == true)
                 {
-                    gameMaster.AddScore(1);
+                    gameMaster.AddDiamonds(1);
+                }
+                else if (isDirty == true)
+                {
+                    gameMaster.DamagePlayer(1);
                 }
                 else
                 {
-                    gameMaster.DamagePlayer(1);
+                    gameMaster.AddScore(1);
                 }
                 Destroy(gameObject);
             }
