@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 126805099571206126}
   - component: {fileID: 126805099571206125}
   - component: {fileID: 8154379228938839150}
+  - component: {fileID: 2262543912551655517}
+  - component: {fileID: 3758670202113109612}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: GameMaster
@@ -70,13 +72,44 @@ MonoBehaviour:
   - {fileID: -956257234043727984, guid: 3d162d2e1c378ad489a009fd50c1b3f8, type: 3}
   - {fileID: -9069563097762300111, guid: 264e836ef728f4c45b6e637724c30f79, type: 3}
   - {fileID: 3832594374389391234, guid: 18ae8a5881fff1e47a9260f6e466a1d6, type: 3}
+  - {fileID: -6698142703264721392, guid: bf2555b51e681c746be6ff5b125e8cd6, type: 3}
   shirts:
   - {fileID: -9108235916185779315, guid: 4c66aa4dcc5b8a04ab5e1d45aa40ef46, type: 3}
   - {fileID: -6591854102567387611, guid: 5743ca41576e106449161db441181daf, type: 3}
   - {fileID: -3156497413021526541, guid: 7cec82cc406a9b84c8925f8023f5b95e, type: 3}
   - {fileID: -7491666187913887833, guid: c64789bb2c1c28a458bf73240e6ed135, type: 3}
+  - {fileID: -8055628337581221526, guid: bf2555b51e681c746be6ff5b125e8cd6, type: 3}
   pants:
   - {fileID: 4040155188390905343, guid: b81e6e75e4582114b9c7bd86a8f3aa6a, type: 3}
   - {fileID: 1638908008611143438, guid: e71d5c19cea6c3940a0d971f48dd8576, type: 3}
   - {fileID: 5194087568832206725, guid: 53504ccc6082ac347abe985106a03248, type: 3}
   - {fileID: 3948767602752848621, guid: 27c017f9e43d08145a0c97a5f08bc2f3, type: 3}
+  - {fileID: 7599318118984158556, guid: d6b1ab66095a16349aac4124203ecf0e, type: 3}
+--- !u!114 &2262543912551655517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126805099571206127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aa8af8b5083a804b81fb244e9b57bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicPlayer: {fileID: 0}
+  soundEffectsVolume: 1
+  musicVolume: 1
+--- !u!114 &3758670202113109612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126805099571206127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 197ad56d16c2f78468e4c1caddeca0f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inGame: 0

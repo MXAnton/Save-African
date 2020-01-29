@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SoundsController : MonoBehaviour
 {
+    public MusicPlayerScript musicPlayer;
+
     [Header("Sound Vars")]
     public float soundEffectsVolume = 1;
     public float musicVolume = 1;
@@ -18,6 +20,8 @@ public class SoundsController : MonoBehaviour
     {
         soundEffectsVolume = newSoundEffectsVolume;
         musicVolume = newMusicVolume;
+
+        musicPlayer.SetMusicVolume(musicVolume);
 
         SaveVolumes();
     }
