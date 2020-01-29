@@ -9,8 +9,8 @@ public class PlayerAppearance : MonoBehaviour
 
     [Header("Head Vars")]
     public Transform headTransform;
-    public float maxHeadRotation = 30;
-    public float headRotationMultiplier;
+    public float maxHeadRotation = 50;
+    public float headRotationMultiplier = 50;
 
     [Header("Arm Vars")]
     public LineRenderer leftArm;
@@ -24,12 +24,17 @@ public class PlayerAppearance : MonoBehaviour
 
     public Color armColor;
 
+    [Header("Legs Vars")]
+    public Transform legsTransform;
+    public float maxLegsRotation = 20;
+    public float legsRotationMultiplier = -15;
+
     [Header("Clothes")]
     public Clothes clothes;
 
     public SpriteRenderer hat;
     public SpriteRenderer shirt;
-    public SpriteRenderer pants;
+    public GameObject pantsParent;
 
     private void Start()
     {
@@ -44,7 +49,8 @@ public class PlayerAppearance : MonoBehaviour
     void Update()
     {
         newXPosition = transform.position.x;
-        UpdateHeadTransform(oldXPosition, newXPosition, headRotationMultiplier, headTransform, maxHeadRotation);
+        UpdateTransform(headTransform, oldXPosition, newXPosition, headRotationMultiplier, maxHeadRotation);
+        UpdateTransform(legsTransform, oldXPosition, newXPosition, legsRotationMultiplier, maxLegsRotation);
         oldXPosition = newXPosition;
 
         UpdateArmLine(leftArm, leftArmStartPosition, leftArmStopPosition);
@@ -52,7 +58,7 @@ public class PlayerAppearance : MonoBehaviour
         UpdateArmLine(rightArm, rightArmStartPosition, rightArmStopPosition);
     }
 
-    static void UpdateHeadTransform(float oldPos, float newPos, float rotationMultiplier, Transform headTransform, float maxRotation)
+    static void UpdateTransform(Transform updateTransform, float oldPos, float newPos, float rotationMultiplier, float maxRotation)
     {
         float movementVelocity = oldPos - newPos;
         float newZHeadRotation = movementVelocity * rotationMultiplier * 1000 * Time.deltaTime;
@@ -68,11 +74,11 @@ public class PlayerAppearance : MonoBehaviour
                 newZHeadRotation = -maxRotation;
             }
             //headTransform.localEulerAngles = new Vector3(0, 0, -newZHeadRotation);
-            headTransform.localEulerAngles = new Vector3(0, 0, Mathf.LerpAngle(headTransform.localEulerAngles.z, -newZHeadRotation, 0.3f));
+            updateTransform.localEulerAngles = new Vector3(0, 0, Mathf.LerpAngle(updateTransform.localEulerAngles.z, -newZHeadRotation, 0.3f));
         }
         else
         {
-            headTransform.localEulerAngles = new Vector3(0, 0, Mathf.LerpAngle(headTransform.localEulerAngles.z, 0, 0.03f));
+            updateTransform.localEulerAngles = new Vector3(0, 0, Mathf.LerpAngle(updateTransform.localEulerAngles.z, 0, 0.03f));
         }
     }
 
@@ -102,6 +108,9 @@ public class PlayerAppearance : MonoBehaviour
 
     void SetPants()
     {
+        int newPants = PlayerPrefs.GetInt("usedPants");
 
+        GameObject newPantsObject = Instantiate(clothes.pants[newPants], pantsParent.transform.position, Quaternion.identity, pantsParent.transform);
+        newPantsObject.transform.localPosition = new Vector2(0, 0);
     }
 }
