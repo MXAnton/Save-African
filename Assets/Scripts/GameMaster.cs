@@ -9,6 +9,9 @@ public class GameMaster : MonoBehaviour
     public UIController uiController;
     public MainMenuUIController mainMenuUIController;
 
+    public bool careerMode = true;
+    public bool arcadeMode = false;
+
     public bool gameOn = true;
     public bool gamePaused = false;
 
@@ -42,6 +45,11 @@ public class GameMaster : MonoBehaviour
         }
         PlayerPrefs.SetInt("latestScore", score);
 
+        PlayerPrefs.Save();
+    }
+
+    void SaveWaterdrops()
+    {
         int newWaterdropsAmount = PlayerPrefs.GetInt("waterdrops");
         newWaterdropsAmount += score;
         PlayerPrefs.SetInt("waterdrops", newWaterdropsAmount);
@@ -86,7 +94,16 @@ public class GameMaster : MonoBehaviour
     void GameOver()
     {
         gameOn = false;
-        SaveScore();
+
+        if (careerMode == true)
+        {
+            SaveScore();
+            SaveWaterdrops();       
+        }
+        else if (arcadeMode == true)
+        {
+            SaveScore();
+        }
 
         int newGameovers = PlayerPrefs.GetInt("gameovers");
         newGameovers++;

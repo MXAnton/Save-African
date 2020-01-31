@@ -34,10 +34,22 @@ public class MainMenuUIController : MonoBehaviour
         soundEffectsVolumeSlider.value = soundsController.soundEffectsVolume;
     }
 
-    public void Play(GameObject fromContainer)
+    public void PlayCareer(GameObject fromContainer)
     {
         fromContainer.GetComponent<Animator>().SetTrigger("Out");
         StartCoroutine(ChangeScene(1, 1));
+    }
+
+    public void PlayArcade(GameObject fromContainer)
+    {
+        fromContainer.GetComponent<Animator>().SetTrigger("Out");
+        StartCoroutine(ChangeScene(2, 1));
+    }
+
+    public void PlayNoEnemies(GameObject fromContainer)
+    {
+        fromContainer.GetComponent<Animator>().SetTrigger("Out");
+        StartCoroutine(ChangeScene(3, 1));
     }
 
     public void Quit()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Clothes : MonoBehaviour
 {
-    public Sprite[] hats;
-    public Sprite[] shirts;
+    public GameObject[] hats;
+    public GameObject[] shirts;
     public GameObject[] pants;
 }

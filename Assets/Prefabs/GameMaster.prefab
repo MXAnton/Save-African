@@ -68,17 +68,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hats:
-  - {fileID: -6323698302485887903, guid: 4c66aa4dcc5b8a04ab5e1d45aa40ef46, type: 3}
-  - {fileID: -956257234043727984, guid: 3d162d2e1c378ad489a009fd50c1b3f8, type: 3}
-  - {fileID: -9069563097762300111, guid: 264e836ef728f4c45b6e637724c30f79, type: 3}
-  - {fileID: 3832594374389391234, guid: 18ae8a5881fff1e47a9260f6e466a1d6, type: 3}
-  - {fileID: -6698142703264721392, guid: bf2555b51e681c746be6ff5b125e8cd6, type: 3}
+  - {fileID: 2378905727869685976, guid: e6b3b5cd195dbfc4ab384b3f609fd908, type: 3}
+  - {fileID: 3008142901862452361, guid: 6a5a4ef1542afde408a8173b0ba94e91, type: 3}
+  - {fileID: 5887516250799651182, guid: c899d4f3bef2d534fa3138294016d50b, type: 3}
+  - {fileID: 3316252009587395447, guid: bf1d1aff338a06e4eb6662bf9755ae20, type: 3}
+  - {fileID: 7100272218632938432, guid: 9cf32e1dfcc95094d9ef0ab33729963a, type: 3}
   shirts:
-  - {fileID: -9108235916185779315, guid: 4c66aa4dcc5b8a04ab5e1d45aa40ef46, type: 3}
-  - {fileID: -6591854102567387611, guid: 5743ca41576e106449161db441181daf, type: 3}
-  - {fileID: -3156497413021526541, guid: 7cec82cc406a9b84c8925f8023f5b95e, type: 3}
-  - {fileID: -7491666187913887833, guid: c64789bb2c1c28a458bf73240e6ed135, type: 3}
-  - {fileID: -8055628337581221526, guid: bf2555b51e681c746be6ff5b125e8cd6, type: 3}
+  - {fileID: 325704424005651235, guid: 002c5073e0ba12843957a1ca0642c8fd, type: 3}
+  - {fileID: 8722182691857708408, guid: 02231c49c0b76274cbb6dd622e1b485a, type: 3}
+  - {fileID: 7368604651361345759, guid: 6d79b5b2a38cd834bb3f39f0825aa242, type: 3}
+  - {fileID: 7688807623035088205, guid: e1cddab813548d146a7f22dbd2f07f35, type: 3}
+  - {fileID: 8972210301448841205, guid: edf6e503b37d2ae41b734e91cc8b1f88, type: 3}
   pants:
   - {fileID: 4040155188390905343, guid: b81e6e75e4582114b9c7bd86a8f3aa6a, type: 3}
   - {fileID: 1638908008611143438, guid: e71d5c19cea6c3940a0d971f48dd8576, type: 3}

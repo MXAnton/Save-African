@@ -32,9 +32,13 @@ public class PlayerAppearance : MonoBehaviour
     [Header("Clothes")]
     public Clothes clothes;
 
-    public SpriteRenderer hat;
-    public SpriteRenderer shirt;
+    public GameObject hatParent;
+    public GameObject shirtParent;
     public GameObject pantsParent;
+
+    public Vector2 hatPosition;
+    public Vector2 shirtPosition;
+    public Vector2 pantsPosition;
 
     private void Start()
     {
@@ -96,14 +100,16 @@ public class PlayerAppearance : MonoBehaviour
     {
         int newHat = PlayerPrefs.GetInt("usedHat");
 
-        hat.sprite = clothes.hats[newHat];
+        GameObject newHatObject = Instantiate(clothes.hats[newHat], hatParent.transform.position, Quaternion.identity, hatParent.transform);
+        newHatObject.transform.localPosition = hatPosition;
     }
 
     void SetShirt()
     {
         int newShirt = PlayerPrefs.GetInt("usedShirt");
 
-        shirt.sprite = clothes.shirts[newShirt];
+        GameObject newShirtObject = Instantiate(clothes.shirts[newShirt], shirtParent.transform.position, Quaternion.identity, shirtParent.transform);
+        newShirtObject.transform.localPosition = shirtPosition;
     }
 
     void SetPants()
@@ -111,6 +117,6 @@ public class PlayerAppearance : MonoBehaviour
         int newPants = PlayerPrefs.GetInt("usedPants");
 
         GameObject newPantsObject = Instantiate(clothes.pants[newPants], pantsParent.transform.position, Quaternion.identity, pantsParent.transform);
-        newPantsObject.transform.localPosition = new Vector2(0, 0);
+        newPantsObject.transform.localPosition = pantsPosition;
     }
 }

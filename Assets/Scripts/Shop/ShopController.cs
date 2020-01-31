@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ShopController : MonoBehaviour
 {
+    public ShopItems shopItems;
     public MainMenuUIController mainMenuUIController;
 
+    public RectTransform itemsHolder;
     public GameObject notEnoughOffer;
-
-    //int requestedBuyCost;
 
     public void BuyDiamonds()
     {
@@ -89,5 +90,60 @@ public class ShopController : MonoBehaviour
         PlayerPrefs.SetInt("usedPants", pantsID);
 
         PlayerPrefs.Save();
+    }
+
+
+
+    public void ChangeShowedItems(TMP_Dropdown dropdown)
+    {
+        int newShowedItems = dropdown.value;
+
+        switch (newShowedItems)
+        {
+            case 1:
+                SetShowedItems(true, false, false);
+                break;
+            case 2:
+                SetShowedItems(false, true, false);
+                break;
+            case 3:
+                SetShowedItems(false, false, true);
+                break;
+            default:
+                SetShowedItems(true, true, true);
+                break;
+        }
+    }
+
+    void SetShowedItems(bool hatItems, bool shirtItems, bool pantsItems)
+    {
+        foreach (GameObject hatItem in shopItems.hatItems)
+        {
+            hatItem.SetActive(hatItems);
+        }
+        foreach (GameObject shirtItem in shopItems.shirtItems)
+        {
+            shirtItem.SetActive(shirtItems);
+        }
+        foreach (GameObject pantsItem in shopItems.pantsItems)
+        {
+            pantsItem.SetActive(pantsItems);
+        }
+
+        UpdateItemsHolderWidth();
+    }
+
+    void UpdateItemsHolderWidth()
+    {
+        int activeChildren = 0;
+        foreach (Transform child in itemsHolder.transform)
+        {
+            if (child.gameObject.activeSelf)
+            {
+                activeChildren++;
+            }
+        }
+
+        itemsHolder.sizeDelta = new Vector2(activeChildren * 620, itemsHolder.sizeDelta.y);
     }
 }

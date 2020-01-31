@@ -417,7 +417,7 @@ MonoBehaviour:
   accelerationSpeed: 0.04
   dirtyWaterSpawnRate: 0.1
   birdSpawnRate: 0.05
-  diamondSpawnRate: 0.007
+  diamondSpawnRate: 0
 --- !u!1 &216951209
 GameObject:
   m_ObjectHideFlags: 0
@@ -3311,6 +3311,16 @@ PrefabInstance:
       propertyPath: adManager
       value: 
       objectReference: {fileID: 1741869637}
+    - target: {fileID: 126805099571206125, guid: 62bf61db54049bf409ccc395f4ccda6d,
+        type: 3}
+      propertyPath: careerMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 126805099571206125, guid: 62bf61db54049bf409ccc395f4ccda6d,
+        type: 3}
+      propertyPath: arcadeMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 126805099571206126, guid: 62bf61db54049bf409ccc395f4ccda6d,
         type: 3}
       propertyPath: m_LocalPosition.x
