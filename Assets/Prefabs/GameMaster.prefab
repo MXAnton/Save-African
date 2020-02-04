@@ -49,6 +49,8 @@ MonoBehaviour:
   adManager: {fileID: 0}
   uiController: {fileID: 0}
   mainMenuUIController: {fileID: 0}
+  careerMode: 1
+  arcadeMode: 0
   gameOn: 1
   gamePaused: 0
   health: 3
@@ -73,18 +75,31 @@ MonoBehaviour:
   - {fileID: 5887516250799651182, guid: c899d4f3bef2d534fa3138294016d50b, type: 3}
   - {fileID: 3316252009587395447, guid: bf1d1aff338a06e4eb6662bf9755ae20, type: 3}
   - {fileID: 7100272218632938432, guid: 9cf32e1dfcc95094d9ef0ab33729963a, type: 3}
+  - {fileID: 2262105364522660650, guid: 9c0b072078fd2d2438659cb4f2fab7af, type: 3}
+  heads:
+  - {fileID: 6640663302355211956, guid: 5e5fc584249ec68469f751cbeb4b9e4e, type: 3}
+  - {fileID: 1190069534639825913, guid: 0727f0064f41cc84787d3e32f000885b, type: 3}
   shirts:
   - {fileID: 325704424005651235, guid: 002c5073e0ba12843957a1ca0642c8fd, type: 3}
   - {fileID: 8722182691857708408, guid: 02231c49c0b76274cbb6dd622e1b485a, type: 3}
   - {fileID: 7368604651361345759, guid: 6d79b5b2a38cd834bb3f39f0825aa242, type: 3}
   - {fileID: 7688807623035088205, guid: e1cddab813548d146a7f22dbd2f07f35, type: 3}
   - {fileID: 8972210301448841205, guid: edf6e503b37d2ae41b734e91cc8b1f88, type: 3}
+  - {fileID: 1345753825646017134, guid: a26f279cdb0175041a9d6bcd799f3281, type: 3}
+  arms:
+  - {fileID: 2100000, guid: 4dfc25c55c921f348b9607c7ae9e2dd5, type: 2}
+  - {fileID: 2100000, guid: 4dfc25c55c921f348b9607c7ae9e2dd5, type: 2}
+  - {fileID: 2100000, guid: 4dfc25c55c921f348b9607c7ae9e2dd5, type: 2}
+  - {fileID: 2100000, guid: 4dfc25c55c921f348b9607c7ae9e2dd5, type: 2}
+  - {fileID: 2100000, guid: 4dfc25c55c921f348b9607c7ae9e2dd5, type: 2}
+  - {fileID: 2100000, guid: da09232df20b1f84eaf458ed569938d4, type: 2}
   pants:
   - {fileID: 4040155188390905343, guid: b81e6e75e4582114b9c7bd86a8f3aa6a, type: 3}
   - {fileID: 1638908008611143438, guid: e71d5c19cea6c3940a0d971f48dd8576, type: 3}
   - {fileID: 5194087568832206725, guid: 53504ccc6082ac347abe985106a03248, type: 3}
   - {fileID: 3948767602752848621, guid: 27c017f9e43d08145a0c97a5f08bc2f3, type: 3}
   - {fileID: 7599318118984158556, guid: d6b1ab66095a16349aac4124203ecf0e, type: 3}
+  - {fileID: 3761415843070640446, guid: 67e19aea1867a984493de9f89b533d99, type: 3}
 --- !u!114 &2262543912551655517
 MonoBehaviour:
   m_ObjectHideFlags: 0

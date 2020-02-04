@@ -33,17 +33,15 @@ public class PlayerAppearance : MonoBehaviour
     public Clothes clothes;
 
     public GameObject hatParent;
+    public GameObject headParent;
     public GameObject shirtParent;
     public GameObject pantsParent;
 
-    public Vector2 hatPosition;
-    public Vector2 shirtPosition;
-    public Vector2 pantsPosition;
-
     private void Start()
     {
-        SetHat();
+        SetHead();
         SetShirt();
+        SetArms();
         SetPants();
 
         newXPosition = transform.position.x;
@@ -99,24 +97,52 @@ public class PlayerAppearance : MonoBehaviour
     void SetHat()
     {
         int newHat = PlayerPrefs.GetInt("usedHat");
+        hatParent = GameObject.Find("Head");
 
-        GameObject newHatObject = Instantiate(clothes.hats[newHat], hatParent.transform.position, Quaternion.identity, hatParent.transform);
-        newHatObject.transform.localPosition = hatPosition;
+        GameObject newHatObject = Instantiate(clothes.hats[newHat], transform.position, Quaternion.identity, shirtParent.transform);
+        newHatObject.transform.parent = hatParent.transform;
+        Vector2 newHatPosition = clothes.hats[newHat].transform.position;
+        newHatObject.transform.localPosition = newHatPosition;
+    }
+
+    void SetHead()
+    {
+        int newHead = PlayerPrefs.GetInt("usedHead");
+
+        GameObject newHeadObject = Instantiate(clothes.heads[newHead], transform.position, Quaternion.identity, shirtParent.transform);
+        newHeadObject.transform.parent = headParent.transform;
+        Vector2 newHatPosition = clothes.heads[newHead].transform.position;
+        newHeadObject.transform.localPosition = newHatPosition;
+
+        headTransform = GameObject.Find("Head").GetComponent<Transform>();
+
+        SetHat();
+    }
+
+    void SetArms()
+    {
+        int newArms = PlayerPrefs.GetInt("usedShirt");
+
+        // Set arms material
+        leftArm.material = clothes.arms[newArms];
+        rightArm.material = clothes.arms[newArms];
     }
 
     void SetShirt()
     {
         int newShirt = PlayerPrefs.GetInt("usedShirt");
 
-        GameObject newShirtObject = Instantiate(clothes.shirts[newShirt], shirtParent.transform.position, Quaternion.identity, shirtParent.transform);
-        newShirtObject.transform.localPosition = shirtPosition;
+        GameObject newShirtObject = Instantiate(clothes.shirts[newShirt], transform.position, Quaternion.identity, shirtParent.transform);
+        Vector2 newShirtPosition = clothes.shirts[newShirt].transform.position;
+        newShirtObject.transform.localPosition = newShirtPosition;
     }
 
     void SetPants()
     {
         int newPants = PlayerPrefs.GetInt("usedPants");
 
-        GameObject newPantsObject = Instantiate(clothes.pants[newPants], pantsParent.transform.position, Quaternion.identity, pantsParent.transform);
-        newPantsObject.transform.localPosition = pantsPosition;
+        GameObject newPantsObject = Instantiate(clothes.pants[newPants], transform.position, Quaternion.identity, pantsParent.transform);
+        Vector2 newPantsPosition = clothes.pants[newPants].transform.position;
+        newPantsObject.transform.localPosition = newPantsPosition;
     }
 }

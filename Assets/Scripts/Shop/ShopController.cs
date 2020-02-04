@@ -11,6 +11,11 @@ public class ShopController : MonoBehaviour
     public RectTransform itemsHolder;
     public GameObject notEnoughOffer;
 
+    private void Start()
+    {
+        UpdateItemsHolderWidth();
+    }
+
     public void BuyDiamonds()
     {
         if (mainMenuUIController.waterdrops >= 100)
@@ -78,6 +83,13 @@ public class ShopController : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    public void ChangeUsedHead(int headID)
+    {
+        PlayerPrefs.SetInt("usedHead", headID);
+
+        PlayerPrefs.Save();
+    }
+
     public void ChangeUsedShirt(int shirtID)
     {
         PlayerPrefs.SetInt("usedShirt", shirtID);
@@ -101,25 +113,32 @@ public class ShopController : MonoBehaviour
         switch (newShowedItems)
         {
             case 1:
-                SetShowedItems(true, false, false);
+                SetShowedItems(true, false, false, false);
                 break;
             case 2:
-                SetShowedItems(false, true, false);
+                SetShowedItems(false, true, false, false);
                 break;
             case 3:
-                SetShowedItems(false, false, true);
+                SetShowedItems(false, false, true, false);
+                break;
+            case 4:
+                SetShowedItems(false, false, false, true);
                 break;
             default:
-                SetShowedItems(true, true, true);
+                SetShowedItems(true, true, true, true);
                 break;
         }
     }
 
-    void SetShowedItems(bool hatItems, bool shirtItems, bool pantsItems)
+    void SetShowedItems(bool hatItems, bool headItems, bool shirtItems, bool pantsItems)
     {
         foreach (GameObject hatItem in shopItems.hatItems)
         {
             hatItem.SetActive(hatItems);
+        }
+        foreach (GameObject headItem in shopItems.headItems)
+        {
+            headItem.SetActive(headItems);
         }
         foreach (GameObject shirtItem in shopItems.shirtItems)
         {
@@ -144,6 +163,6 @@ public class ShopController : MonoBehaviour
             }
         }
 
-        itemsHolder.sizeDelta = new Vector2(activeChildren * 620, itemsHolder.sizeDelta.y);
+        itemsHolder.sizeDelta = new Vector2(activeChildren * 620 + 20, itemsHolder.sizeDelta.y);
     }
 }
