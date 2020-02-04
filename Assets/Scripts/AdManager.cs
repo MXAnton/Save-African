@@ -9,9 +9,11 @@ public class AdManager : MonoBehaviour
 
     public bool inGame = false;
 
+    string android = "3447793";
+
     void Start()
     {
-        Advertisement.Initialize("3447793", false);
+        Advertisement.Initialize(android, false);
 
         gameMaster = GameObject.FindWithTag("GameMaster").GetComponent<GameMaster>();
 

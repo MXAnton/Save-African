@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8154379228938839150}
   - component: {fileID: 2262543912551655517}
   - component: {fileID: 3758670202113109612}
+  - component: {fileID: 508425111722571785}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: GameMaster
@@ -128,3 +129,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inGame: 0
+--- !u!114 &508425111722571785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126805099571206127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55f8c21c58ffe9540a1a294b0ffea464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doneInitiating: 0
+  bowlSizeStates:
+  - 1.2
+  - 1
+  - 0.8
+  - 0.6
+  - 0.4
+  - 0.2
+  - 0.1
+  currentBowlSizeState: 0

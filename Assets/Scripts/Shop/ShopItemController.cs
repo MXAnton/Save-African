@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ShopItemController : MonoBehaviour
 {
@@ -45,6 +46,7 @@ public class ShopItemController : MonoBehaviour
     public void UpdateItemGUI()
     {
         buyConfirmationView.SetActive(false);
+        priceView.GetComponentInChildren<TextMeshProUGUI>().text = "" + price;
 
         if (useable == true)
         {

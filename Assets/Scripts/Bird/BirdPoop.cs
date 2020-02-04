@@ -19,7 +19,18 @@ public class BirdPoop : MonoBehaviour
     {
         minX = cloudController.minX;
         maxX = cloudController.maxX;
+
         dropPosition = Random.Range(minX, maxX);
+        dropPosition = Mathf.Round(dropPosition * 2.5f) / 2.5f;
+
+        if (dropPosition > minX)
+        {
+            dropPosition -= 0.2f;
+        }
+        else
+        {
+            dropPosition += 0.2f;
+        }
     }
 
     void Update()
@@ -33,7 +44,7 @@ public class BirdPoop : MonoBehaviour
     void DropPoop()
     {
         hasDropped = true;
-        GameObject newBirdPoop = Instantiate(birdPoop, new Vector2(transform.position.x, transform.position.y - 0.1f), Quaternion.identity);
+        GameObject newBirdPoop = Instantiate(birdPoop, new Vector2(dropPosition, transform.position.y - 0.1f), Quaternion.identity);
         newBirdPoop.GetComponent<WaterdropController>().cloudController = cloudController;
     }
 }

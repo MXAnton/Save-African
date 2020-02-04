@@ -717,6 +717,7 @@ GameObject:
   - component: {fileID: 319863625}
   - component: {fileID: 319863628}
   - component: {fileID: 319863626}
+  - component: {fileID: 319863627}
   m_Layer: 0
   m_Name: Bowl
   m_TagString: Bowl
@@ -733,7 +734,7 @@ Transform:
   m_GameObject: {fileID: 319863622}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -3.8, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_LocalScale: {x: 1.2, y: 0.8, z: 1}
   m_Children:
   - {fileID: 1517059885}
   - {fileID: 32240812}
@@ -835,6 +836,19 @@ MonoBehaviour:
   maxX: 2.3
   minY: -3.8
   maxY: -2.5
+--- !u!114 &319863627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319863622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 644e50094b872334384622e93651c4a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgrades: {fileID: 1741869636}
 --- !u!50 &319863628
 Rigidbody2D:
   serializedVersion: 4
@@ -2624,19 +2638,18 @@ MonoBehaviour:
   musicPlayer: {fileID: 5503337100300010127}
   soundEffectsVolume: 1
   musicVolume: 1
---- !u!114 &1741869637
+--- !u!114 &1741869636 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 508425111722571785, guid: 62bf61db54049bf409ccc395f4ccda6d,
+    type: 3}
+  m_PrefabInstance: {fileID: 126805098718051175}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1741869633}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 197ad56d16c2f78468e4c1caddeca0f4, type: 3}
+  m_Script: {fileID: 11500000, guid: 55f8c21c58ffe9540a1a294b0ffea464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inGame: 1
 --- !u!1 &1770696310
 GameObject:
   m_ObjectHideFlags: 0
@@ -3059,7 +3072,7 @@ PrefabInstance:
         type: 3}
       propertyPath: adManager
       value: 
-      objectReference: {fileID: 1741869637}
+      objectReference: {fileID: 126805098718051177}
     - target: {fileID: 126805099571206126, guid: 62bf61db54049bf409ccc395f4ccda6d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3154,7 +3167,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1190069534639825913, guid: 0727f0064f41cc84787d3e32f000885b,
         type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2262543912551655517, guid: 62bf61db54049bf409ccc395f4ccda6d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 62bf61db54049bf409ccc395f4ccda6d, type: 3}
 --- !u!114 &126805098718051176 stripped
 MonoBehaviour:
@@ -3166,6 +3180,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ef643403512d8d458b2da5134298077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &126805098718051177 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3758670202113109612, guid: 62bf61db54049bf409ccc395f4ccda6d,
+    type: 3}
+  m_PrefabInstance: {fileID: 126805098718051175}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741869633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 197ad56d16c2f78468e4c1caddeca0f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1427259791131122886
