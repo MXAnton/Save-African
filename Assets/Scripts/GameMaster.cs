@@ -5,6 +5,7 @@ using System;
 
 public class GameMaster : MonoBehaviour
 {
+    Upgrades upgrades;
     public AdManager adManager;
     public UIController uiController;
     public MainMenuUIController mainMenuUIController;
@@ -23,6 +24,8 @@ public class GameMaster : MonoBehaviour
 
     private void Start()
     {
+        upgrades = GetComponent<Upgrades>();
+
         latestScore = PlayerPrefs.GetInt("latestScore");
         highscore = PlayerPrefs.GetInt("highscore");
 
@@ -35,6 +38,12 @@ public class GameMaster : MonoBehaviour
     public void AddScore(int amount)
     {
         score += amount;
+
+        if (gameOn == true)
+        {
+            uiController.scoreText.text = "" + score;
+        }
+        uiController.gameOverScoreText.text = "" + score;
     }
 
     public void SaveScore()
@@ -48,12 +57,18 @@ public class GameMaster : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    void SaveWaterdrops()
+    public void AddCatchBonus()
+    {
+        float catchBonusDuplicator = upgrades.catchBonusStates[upgrades.currentCatchBonusState];
+        score = Mathf.CeilToInt(score * catchBonusDuplicator);
+    }
+
+    public void SaveWaterdrops()
     {
         int newWaterdropsAmount = PlayerPrefs.GetInt("waterdrops");
         newWaterdropsAmount += score;
-        PlayerPrefs.SetInt("waterdrops", newWaterdropsAmount);
 
+        PlayerPrefs.SetInt("waterdrops", newWaterdropsAmount);
         PlayerPrefs.Save();
     }
 
@@ -98,6 +113,7 @@ public class GameMaster : MonoBehaviour
         if (careerMode == true)
         {
             SaveScore();
+            AddCatchBonus();
             SaveWaterdrops();       
         }
         else if (arcadeMode == true)
@@ -107,7 +123,7 @@ public class GameMaster : MonoBehaviour
 
         int newGameovers = PlayerPrefs.GetInt("gameovers");
         newGameovers++;
-        if (newGameovers >= 3)
+        if (newGameovers >= 2)
         {
             PlayerPrefs.SetInt("gameovers", 0);
             adManager.ShowNonRewardedAd();

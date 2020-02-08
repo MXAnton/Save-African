@@ -11,6 +11,8 @@ public class AdManager : MonoBehaviour
 
     string android = "3447793";
 
+    string reward;
+
     void Start()
     {
         Advertisement.Initialize(android, false);
@@ -31,8 +33,10 @@ public class AdManager : MonoBehaviour
         }
     }
 
-    public void ShowRewardedAd()
+    public void ShowRewardedAd(string newReward)
     {
+        reward = newReward;
+
         if (Advertisement.IsReady("rewardedVideo"))
         {
             var options = new ShowOptions { resultCallback = HandleShowResult };
@@ -46,10 +50,18 @@ public class AdManager : MonoBehaviour
         {
             case ShowResult.Finished:
                 Debug.Log("The ad was successfully shown.");
-                gameMaster.AddDiamonds(1);
-                //
-                // YOUR CODE TO REWARD THE GAMER
-                // Give coins etc.
+                switch (reward)
+                {
+                    case "diamond":
+                        Debug.Log("Add diamonds");
+                        gameMaster.AddDiamonds(1);
+                        break;
+                    case "dubbleWaterdrops":
+                        Debug.Log("Dubble score");
+                        gameMaster.SaveWaterdrops();
+                        gameMaster.AddScore(gameMaster.score);
+                        break;
+                }
                 break;
             case ShowResult.Skipped:
                 Debug.Log("The ad was skipped before reaching the end.");

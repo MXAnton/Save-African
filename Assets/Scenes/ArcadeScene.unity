@@ -834,7 +834,7 @@ MonoBehaviour:
   minX: -2.3
   maxX: 2.3
   minY: -3.8
-  maxY: -2.5
+  maxY: -2.2
 --- !u!50 &319863628
 Rigidbody2D:
   serializedVersion: 4
@@ -2799,6 +2799,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameMaster: {fileID: 862612618}
   scoreText: {fileID: 1991173362}
+  gameOverScoreText: {fileID: 0}
   pauseMenu: {fileID: 1278610969}
   gameOverMenu: {fileID: 1633324489}
   lifes:

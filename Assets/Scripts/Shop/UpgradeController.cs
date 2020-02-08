@@ -8,6 +8,8 @@ public class UpgradeController : MonoBehaviour
 
     public GameObject notEnoughOffer;
 
+    public UpgradeItemController[] itemControllers;
+
     public void BuyUpgrade(string whichUpgrade, int[] prices)
     {
         int currentUpgradeState = PlayerPrefs.GetInt(whichUpgrade);
@@ -37,5 +39,13 @@ public class UpgradeController : MonoBehaviour
     public void ShowNotEnoughOffer()
     {
         notEnoughOffer.SetActive(true);
+    }
+
+    public void UpdateAllUpgrades()
+    {
+        foreach (UpgradeItemController itemController in itemControllers)
+        {
+            itemController.UpdateItemGUI();
+        }
     }
 }

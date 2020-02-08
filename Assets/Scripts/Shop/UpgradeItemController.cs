@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UpgradeItemController : MonoBehaviour
 {
+    public Upgrades upgrades;
     public UpgradeController upgradeController;
     public string upgrade;
     public int[] prices;
@@ -18,9 +20,12 @@ public class UpgradeItemController : MonoBehaviour
     public GameObject downgradeBtn;
 
     public TextMeshProUGUI upgradeLevelText;
+    public bool isCatchBonus = false;
 
     void Start()
     {
+        upgrades = GameObject.FindWithTag("GameMaster").GetComponent<Upgrades>();
+
         //ResetBoughtUpgrades();
 
         UpdateItemGUI();
@@ -75,8 +80,16 @@ public class UpgradeItemController : MonoBehaviour
 
         buyConfirmationView.SetActive(false);
 
-        int currentUpgradeState = PlayerPrefs.GetInt(upgrade) + 1;
-        upgradeLevelText.text = "" + currentUpgradeState;
+        if (isCatchBonus == false)
+        {
+            int currentUpgradeState = PlayerPrefs.GetInt(upgrade) + 1;
+            upgradeLevelText.text = "" + currentUpgradeState;
+        }
+        else
+        {
+            int currentUpgradeState = PlayerPrefs.GetInt(upgrade);
+            upgradeLevelText.text = "x" + upgrades.catchBonusStates[currentUpgradeState];
+        }
 
         if (PlayerPrefs.GetInt(upgrade) == 0)
         {
@@ -93,6 +106,18 @@ public class UpgradeItemController : MonoBehaviour
             upgradeBtn.SetActive(true);
             downgradeBtn.SetActive(true);
         }
+
+        if (currentPrice <= PlayerPrefs.GetInt("waterdrops") || PlayerPrefs.GetInt(upgrade) < PlayerPrefs.GetInt("bought" + upgrade))
+        {
+            upgradeBtn.GetComponent<Button>().enabled = true;
+            upgradeBtn.GetComponent<Image>().color = Color.white;
+        }
+        else
+        {
+            upgradeBtn.GetComponent<Button>().enabled = false;
+            upgradeBtn.GetComponent<Image>().color = Color.grey;
+        }
+
 
         if (PlayerPrefs.GetInt(upgrade) < PlayerPrefs.GetInt("bought" + upgrade) || PlayerPrefs.GetInt("bought" + upgrade) == prices.Length - 1)
         {

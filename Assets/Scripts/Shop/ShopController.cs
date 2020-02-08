@@ -13,6 +13,8 @@ public class ShopController : MonoBehaviour
 
     private void Start()
     {
+        mainMenuUIController.SaveCurrencies();
+
         UpdateItemsHolderWidth();
     }
 

@@ -23,8 +23,8 @@ public class MainMenuUIController : MonoBehaviour
     public int waterdrops;
     public int diamonds;
 
-    public TextMeshProUGUI waterdropsText;
-    public TextMeshProUGUI diamondsText;
+    public TextMeshProUGUI[] waterdropsTexts;
+    public TextMeshProUGUI[] diamondsTexts;
 
     private void Start()
     {
@@ -95,10 +95,16 @@ public class MainMenuUIController : MonoBehaviour
     public void UpdateShowedCurrencies()
     {
         waterdrops = PlayerPrefs.GetInt("waterdrops");
-        waterdropsText.text = "" + waterdrops;
+        foreach (TextMeshProUGUI waterdropsText in waterdropsTexts)
+        {
+            waterdropsText.text = "" + waterdrops;
+        }
 
         diamonds = PlayerPrefs.GetInt("diamonds");
-        diamondsText.text = "" + diamonds;
+        foreach (TextMeshProUGUI diamondsText in diamondsTexts)
+        {
+            diamondsText.text = "" + diamonds;
+        }
     }
 
     public void OpenWebsite()

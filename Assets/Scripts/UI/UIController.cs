@@ -9,13 +9,14 @@ public class UIController : MonoBehaviour
     public GameMaster gameMaster;
 
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI gameOverScoreText;
 
     public GameObject pauseMenu;
     public GameObject gameOverMenu;
 
     public GameObject[] lifes;
 
-    void Update()
+    void Start()
     {
         scoreText.text = "" + gameMaster.score;
     }
@@ -63,6 +64,7 @@ public class UIController : MonoBehaviour
     public void ShowGameOverMenu()
     {
         gameOverMenu.SetActive(true);
+        gameOverScoreText.text = "" + gameMaster.score;
     }
 
     public void RemoveLife(int whichLife)
