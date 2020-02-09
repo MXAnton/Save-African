@@ -23,17 +23,23 @@ public class CloudController : MonoBehaviour
     public float startWaterdropSpawnDelay = 4f;
     public float minWaterdropSpawnDelay = 0.2f;
     public float waterdropSpawnDelay;
+    public float currentSpawnDelay;
     [Space]
     public float accelerationSpeed = 0.01f;
     [Space]
     public float dirtyWaterSpawnRate = 0.1f; // 0-1
     public float birdSpawnRate = 0.05f; // 0-1
     public float diamondSpawnRate = 0.007f; // 0-1
+    [Space]
+    public float currentDirtyWaterSpawnRate = 0.1f; // 0-1
+    public float currentBirdSpawnRate = 0.05f; // 0-1
+    public float currentDiamondSpawnRate = 0.007f; // 0-1
 
     void Start()
     {
         waterdropMovementSpeed = startWaterdropMovementSpeed;
         waterdropSpawnDelay = startWaterdropSpawnDelay;
+        currentSpawnDelay = waterdropSpawnDelay;
 
         StartCoroutine(SpawnWaterdrop());
     }
@@ -66,7 +72,7 @@ public class CloudController : MonoBehaviour
                 float xSpawnPosition = Random.Range(minX, maxX);
                 xSpawnPosition = Mathf.Round(xSpawnPosition * 2.5f) / 2.5f;
 
-                if (whichObjectToSpawn <= dirtyWaterSpawnRate)
+                if (whichObjectToSpawn <= currentDirtyWaterSpawnRate)
                 {
                     newWaterdrop = Instantiate(waterdropDirty, new Vector2(xSpawnPosition, spawnYPosition), Quaternion.identity);
 
@@ -80,18 +86,18 @@ public class CloudController : MonoBehaviour
                 }
 
 
-                if (whichObjectToSpawn >= 1 - birdSpawnRate)
+                if (whichObjectToSpawn >= 1 - currentBirdSpawnRate)
                 {
                     SpawnBird();
                 }
-                else if (whichObjectToSpawn >= 1 - birdSpawnRate - diamondSpawnRate)
+                else if (whichObjectToSpawn >= 1 - currentBirdSpawnRate - currentDiamondSpawnRate)
                 {
                     GameObject newDiamond = Instantiate(diamond, new Vector2(xSpawnPosition, spawnYPosition), Quaternion.identity);
 
                     newDiamond.GetComponent<WaterdropController>().cloudController = this;
                 }
 
-                yield return new WaitForSeconds(waterdropSpawnDelay);
+                yield return new WaitForSeconds(currentSpawnDelay);
             }
             else
             {

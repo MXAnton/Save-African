@@ -3,18 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
     public GameMaster gameMaster;
-
+    [Space]
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverScoreText;
+
+    public Slider catsSlider;
+    public Slider dogsSlider;
 
     public GameObject pauseMenu;
     public GameObject gameOverMenu;
 
     public GameObject[] lifes;
+
 
     void Start()
     {
@@ -70,5 +75,20 @@ public class UIController : MonoBehaviour
     public void RemoveLife(int whichLife)
     {
         lifes[whichLife - 1].SetActive(false);
+    }
+
+    public void UpdateCatsAndDogsSliders(float newValue)
+    {
+        if (newValue > 1)
+        {
+            newValue = 1;
+        }
+        else if (newValue < 0)
+        {
+            newValue = 0;
+        }
+
+        catsSlider.value = newValue / 2;
+        dogsSlider.value = newValue / 2;
     }
 }
