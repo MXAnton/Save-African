@@ -165,6 +165,6 @@ public class ShopController : MonoBehaviour
             }
         }
 
-        itemsHolder.sizeDelta = new Vector2(activeChildren * 620 + 20, itemsHolder.sizeDelta.y);
+        itemsHolder.sizeDelta = new Vector2(activeChildren * 360 + 20, itemsHolder.sizeDelta.y);
     }
 }

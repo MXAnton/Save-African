@@ -38,9 +38,17 @@ public class GameMaster : MonoBehaviour
 
     public void AddScore(int amount)
     {
-        if (boostController.rainingCatsAndDogs == true)
+        if (boostController != null)
         {
-            score += Mathf.CeilToInt(amount * boostController.boostAmount);
+            if (boostController.rainingCatsAndDogs == true)
+            {
+                score += Mathf.CeilToInt(amount * boostController.boostAmount);
+            }
+            else
+            {
+                score += amount;
+            }
+            boostController.AddCatsAndDogsAmount(amount);
         }
         else
         {
@@ -52,8 +60,6 @@ public class GameMaster : MonoBehaviour
             uiController.scoreText.text = "" + score;
         }
         uiController.gameOverScoreText.text = "" + score;
-
-        boostController.AddCatsAndDogsAmount(amount);
     }
 
     public void SaveScore()
@@ -95,7 +101,7 @@ public class GameMaster : MonoBehaviour
 
     public void DamagePlayer(int amount)
     {
-        if (boostController.rainingCatsAndDogs == false)
+        if (boostController == null)
         {
             health -= amount;
 
@@ -115,6 +121,31 @@ public class GameMaster : MonoBehaviour
                     //    uiController.RemoveLife(1);
                     //    GameOver();
                     //    break;
+            }
+        }
+        else
+        {
+            if (boostController.rainingCatsAndDogs == false)
+            {
+                health -= amount;
+
+                switch (health)
+                {
+                    case 2:
+                        uiController.RemoveLife(3);
+                        break;
+                    case 1:
+                        uiController.RemoveLife(2);
+                        break;
+                    case 0:
+                        uiController.RemoveLife(1);
+                        GameOver();
+                        break;
+                        //default:
+                        //    uiController.RemoveLife(1);
+                        //    GameOver();
+                        //    break;
+                }
             }
         }
     }
@@ -146,7 +177,10 @@ public class GameMaster : MonoBehaviour
             PlayerPrefs.SetInt("gameovers", newGameovers);
         }
 
-        PlayerPrefs.SetFloat(boostController.catsAndDogsAmountSave, boostController.catsAndDogsAmount);
+        if (boostController != null)
+        {
+            PlayerPrefs.SetFloat(boostController.catsAndDogsAmountSave, boostController.catsAndDogsAmount);
+        }
 
         PlayerPrefs.Save();
 

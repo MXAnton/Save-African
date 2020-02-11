@@ -51,7 +51,7 @@ public class UIController : MonoBehaviour
     public void OnRestartLevel(GameObject fromMenu)
     {
         fromMenu.GetComponent<Animator>().SetTrigger("Out");
-        StartCoroutine(ChangeScene(1, 1));
+        StartCoroutine(ChangeScene(SceneManager.GetActiveScene().buildIndex, 1));
     }
 
     public void MainMenu(GameObject fromMenu)
